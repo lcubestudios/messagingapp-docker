@@ -1,0 +1,39 @@
+version: '3.9'
+services:
+    api:
+      image: lcubestudios/messagingapp-api
+      container_name: messagingapp-api
+      build:
+         context: .
+      volumes:
+        - ./apache/:/var/www/html
+      ports:
+        - 80:80
+      # depends_on:
+      #   - db
+
+    # database:
+    #   image: lcubestudios/messagingapp-db
+    #   container_name: messagingapp-db
+    #   build:
+    #     context: './api/postgres'
+    #   ports:
+    #     - "5432:5432"
+    #   restart: always
+    #   environment:
+    #     - POSTGRES_USER=${DB_USER}
+    #     - POSTGRES_PASSWORD=${DB_PASSWORD}
+    #     - POSTGRES_DB=${DB_NAME}
+    #   volumes:
+    #     - ./pgdata:/var/lib/postgresql/data
+    
+    # pgadmin:
+    #   container_name: messagingapp-phppgadmin
+    #   image: bitnami/phppgadmin
+    #   environment:
+    #     - DATABASE_HOST=database
+    #   ports: 
+    #     - "8080:8080"
+    #   depends_on:
+    #     - db
+        
