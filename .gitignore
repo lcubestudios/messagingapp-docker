@@ -95,3 +95,5 @@ node_modules
 dist
 # PHP
 vendor
+#PSQL DATA folder
+postgres-data
