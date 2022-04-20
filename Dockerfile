@@ -5,7 +5,7 @@ FROM php:8.1-apache
 ENV APACHE_DIR /var/www/html
 ENV API_REPO_NAME messagingapp-api
 
-#Install required packages 
+#Install linux packages 
 RUN apt update && apt upgrade -y
 RUN apt install -y git zip nano libpq-dev -y && docker-php-ext-install pdo pdo_pgsql pgsql
 
@@ -15,11 +15,8 @@ RUN php -r "if (hash_file('sha384', 'composer-setup.php') === '906a84df04cea2aa7
 RUN php composer-setup.php --install-dir=/usr/local/bin --filename=composer
 
 #Clone github repo
-RUN cd /tmp && git clone https://github.com/lcubestudios/messagingapp-api.git 
-#RUN cp -R /tmp/${API_REPO_NAME} ${APACHE_DIR}/
-
-#Create new user change ownership of working directory
-# RUN useradd -M webuser && chown -R webuser:webuser /var/www/html
-# RUN cd ${APACHE_DIR}/api/${API_REPO_NAME} && composer install
+RUN git clone https://github.com/lcubestudios/messagingapp-api.git
+#Install libraries 
+RUN cd ${APACHE_DIR}/${API_REPO_NAME} && composer install && touch .env
 
 EXPOSE 80
