@@ -19,7 +19,7 @@ services:
         - 80:80
         - 443:443
       depends_on:
-        - db
+        - database
 
     database:
       image: postgres:14
@@ -43,4 +43,4 @@ services:
       ports: 
         - "8080:8080"
       depends_on:
-        - db
+        - database
