@@ -1,12 +1,10 @@
 version: '3.9'
 services:
-    api:
-      image: lcubestudios/messagingapp-api
-      container_name: messagingapp-api
+    app:
+      image: lcubestudios/messagingapp
+      container_name: messagingapp
       build:
          context: '.'
-      # volumes:
-      #   - ./app/:/var/www/html
       env_file:
         - ./.env
       environment:
@@ -15,6 +13,9 @@ services:
         - DB_PASSWORD=${DB_PASSWORD}
         - DB_PORT=5432
         - DB_NAME=${DB_NAME}
+        - VUE_APP_BASE_URL=${VUE_APP_BASE_URL}
+        - VUE_APP_API_URL=${VUE_APP_API_URL}
+        - VUE_APP_SITE_TITLE=${VUE_APP_SITE_TITLE}
       ports:
         - 80:80
         - 443:443
