@@ -82,10 +82,17 @@ When ready, simply use Docker compose to build the image.
 2. Update `.env` variables
 
     ```
-    ## DATABASE ##
-    DB_USER=“YOUR_DB_USERNAME”
-    DB_PASSWORD=“YOUR_DB_PASSWORD”
-    DB_PORT=YOUR_PORT
+    ##FRONTEND
+    VUE_APP_BASE_URL='/'
+    VUE_APP_API_URL='/messagingapp-api'
+    VUE_APP_SITE_TITLE='Messaging App | powered by LCube Studios' 
+
+    ##BACKEND
+    DB_USER="postgres"  #if you use a different user you will need to update the schema file
+    DB_PASSWORD="Yoursecurepassword!"
+    DB_NAME="demo"
+    DB_PORT=5432
+
     ```
 #### Step 2: Initialize Docker
 
